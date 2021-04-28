@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@using (Html.BeginForm("OnPost", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="text-center">
+        <h1 class="display-4">Chiffre de Vigenère</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="container shadow p-3 mb-5 bg-white rounded d-flex flex-column">
+                <div>
+                    <label>Текст</label>
+                    <textarea class="@ViewBag.textError" name="myText" rows="3" placeholder="Введите текст">@ViewBag.text</textarea>
+                    <div class="invalid-feedback">
+                        Отсутствует входное значение!
+                    </div>
+                    <h4 class="text-center text-muted mb-2">или используйте файл</h4>
+                </div>
+                
+                <div class="text-center">
+                    <input type="file" name="file" class="text-center m-auto" accept="text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                </div>
+                <div class="mb-3">
+                    <label>Ключ</label>
+                    <input type="text" class="@ViewBag.keyError" name="key" id="validationServer03" aria-describedby="validationServer03Feedback" placeholder="Введите ключ" required>
+                    <div class="invalid-feedback">
+                        Введен некоректный ключ!
+                    </div>
+                </div>
+                <input type="submit" value="Продолжить" class="btn btn-info d-none d-lg-block" />
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="container shadow p-3 mb-5 bg-white rounded  d-flex flex-column ">
+                <p class="mb-1">Тип <abbr title="При ROT0 а преобразуется в а, при ROT1 а преобразуется в б">кодировки:</abbr></p>
+                <div class="btn-group btn-group-toggle" style="display:flex; " data-toggle="buttons">
+                    <label class="btn btn-secondary active" style="flex: 1">
+                        <input type="radio" name="ROTcheck" id="ROTRadio1" value="ROT0" checked> ROT0
+                    </label>
+                    <label class="btn btn-secondary" style="flex: 1">
+                        <input type="radio" name="ROTcheck" id="ROTRadio2" value="ROT1"> ROT1
+                    </label>
+                </div>
+                <p class="mb-1">Язык ключа:</p>
+
+                <div class="btn-group btn-group-toggle" style="display:flex; " data-toggle="buttons">
+                    <label class="btn btn-secondary active" style="flex: 1">
+                        <input type="radio" name="LanguageCheck" id="LanguageRadion1" value="rus" checked> Русский
+                    </label>
+                    <label class="btn btn-secondary " style="flex: 1">
+                        <input type="radio" name="LanguageCheck" id="LanguageRadion2" value="eng"> Английский
+                    </label>
+                </div>
+                <p class="mb-1">Действие:</p>
+                <div class="btn-group btn-group-toggle" style="display:flex;" data-toggle="buttons">
+                    <label class="btn btn-secondary active" style="flex: 1">
+                        <input type="radio" name="ActionType" id="ActionRadio1" value="Зашифровать" checked> Зашифровать
+                    </label>
+
+                    <label class="btn btn-secondary" style="flex: 1">
+                        <input type="radio" name="ActionType" id="ActionRadio2" value="Расшифровать"> Расшифровать
+                    </label>
+                </div>
+
+                @*<div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ROTcheck" id="ROTRadio1" value="ROT0">
+            <label class="form-check-label" for="inlineRadio1">ROT0</label>
+            <input class="form-check-input" type="radio" name="ROTcheck" id="ROTRadio2" value="ROT1">
+            <label class="form-check-label" for="inlineRadio2">ROT1</label>
+        </div>*@
+                @*<div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="LanguageCheck" id="LanguageRadion1" value="rus">
+            <label class="form-check-label" for="inlineRadio1">Русский</label>
+            <input class="form-check-input" type="radio" name="LanguageCheck" id="LanguageRadion2" value="eng">
+            <label class="form-check-label" for="inlineRadio2">Английский</label>
+        </div>*@
+                @*<div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ActionType" id="inlineRadio1" value="Зашифровать" oninput="button.value = inlineRadio1.value">
+            <label class="form-check-label" for="inlineRadio2">Зашифровать</label>
+            <input class="form-check-input" type="radio" name="ActionType" id="inlineRadio2" value="Расшифровать" oninput="button.value = inlineRadio2.value">
+            <label class="form-check-label" for="inlineRadio2">Расшифровать</label>
+        </div>*@
+            </div>
+        </div>
+    </div>
+   
+    <input type="submit" value="Продолжить" class="btn btn-info d-block d-lg-none w-100"  />
+}

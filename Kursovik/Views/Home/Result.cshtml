@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Result";
+}
+
+
+@using (Html.BeginForm("Download", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="text-center">
+        <h1 class="display-4 itali">Результат шифра</h1>
+    </div>
+    <div class="container shadow p-3 mb-5 bg-white rounded d-flex flex-column">
+        <div class="row text-center">
+            <div class="container shadow-card d-flex flex-column">
+                <div class="mb-3">
+                    <textarea class="form-control" name="resultText" rows="3">@ViewBag.text</textarea>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Скачать" id="button" class="btn btn-info" />
+    </div>
+}
