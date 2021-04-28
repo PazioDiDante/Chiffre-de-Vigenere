@@ -63,6 +63,7 @@ namespace Kursovik.Controllers
             }
             string rot = ROTcheck;
             string language = LanguageCheck;
+            key = key.ToLower();
             if (language == "rus")
             {
                 if (key.Except(EncodingHelper.russianLetter.Keys.ToArray()).Count() != 0)
